@@ -726,3 +726,47 @@
 - Source: /Users/zenray/.codex/sessions/2026/10/03/rollout-2026-10-03T09-05-46-01a10095-4b7f-7502-bd33-d3cfc21acd20.jsonl. (3 October 2026, 15:06:15 +0200)
 
 > Le jeu est fermé, donc tu peux essayer de faire tous les tests que tu veux sans lancer le jeu, s'il te plaît. Mais je pense qu'il doit s'agir d'un problème de shader ou de... À mon avis, il faut plutôt chercher du côté de la compatibilité shader et du jeu pour trouver la solution. L'idéal, je pense, ce serait de lancer le jeu via D3D Metal et de trouver comment faire en sorte que le jeu fonctionne vraiment sur ça pour que les shaders soient bien compilés. Parce qu'à mon avis, c'est un problème de shader qui compile pas, et c'est pas du tout en rapport avec... Alors après, il y a aussi le ray tracing qui plante, mais le ray tracing plante parce que le jeu se lance pas en D3D Metal, en DirectX 12. Donc il faut trouver comment faire en sorte que le jeu puisse être lancé en DirectX 12, enfin dans la compilation CrossOver. Et une fois que t'as ça, bah valider que les fenêtres affichent bien la bonne couleur. Mais c'est 100% un problème de shader, donc un problème de lecture des shaders via DirectX, à mon avis. Donc creuse de ce côté et applique le patch dans la bottle. (3 October 2026, 15:06:15 +0200)
+
+## 3 October 2026, 15:20:23 +0200 : Iteration
+
+<!-- feedback-event:73b5ee832cc64cc48870557bc5f9fc1b64ba6e1fe559b54107a824247b1af84a (3 October 2026, 15:20:23 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (3 October 2026, 15:20:23 +0200)
+- Source: /Users/zenray/.codex/sessions/2026/10/03/rollout-2026-10-03T09-05-46-01a10095-4b7f-7502-bd33-d3cfc21acd20.jsonl. (3 October 2026, 15:20:23 +0200)
+
+> J’ai appliqué **un patch expérimental dans la bottle, sans lancer le jeu** : (3 October 2026, 15:20:23 +0200)
+>
+> - D3DMetal explicitement sélectionné. (3 October 2026, 15:20:23 +0200)
+> - Option de compilation `D3DM_FORCE_RTZ_TEXWRITE=1` activée. (3 October 2026, 15:20:23 +0200)
+> - Ancien cache sauvegardé pour forcer une recompilation au prochain lancement. (3 October 2026, 15:20:23 +0200)
+>
+> Le jeu utilisait déjà D3DMetal, qui traduit DirectX 12 ; l’absence de ce moteur n’explique donc pas le problème. [Source CodeWeavers](https://www.codeweavers.com/about/news/press/20230927) (3 October 2026, 15:20:23 +0200)
+>
+> Les tests hors jeu montrent que l’option change effectivement le code Metal de quatre shaders testés. **Cela ne prouve pas encore qu’elle corrige les fenêtres.** Le retour arrière est testé et la procédure enregistrée dans le skill. (3 October 2026, 15:20:23 +0200)
+>
+> | Ce que tu voulais | État | Preuve | (3 October 2026, 15:20:23 +0200)
+> |---|---|---| (3 October 2026, 15:20:23 +0200)
+> | Creuser les shaders | Fait | 1 257 conteneurs inspectés | (3 October 2026, 15:20:23 +0200)
+> | Appliquer dans la bottle | Fait | Configuration relue, sauvegarde vérifiée | (3 October 2026, 15:20:23 +0200)
+> | Fenêtres aux bonnes couleurs | À vérifier | Nécessite le prochain lancement | (3 October 2026, 15:20:23 +0200)
+
+## 3 October 2026, 15:20:24 +0200 : Iteration
+
+<!-- feedback-event:5ea1101eb35e31f2bf02e8658f618dd220e9499da8088822c84ce59f1cebbd8d (3 October 2026, 15:20:24 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (3 October 2026, 15:20:24 +0200)
+- Source: /Users/zenray/.codex/sessions/2026/10/03/rollout-2026-10-03T09-05-46-01a10095-4b7f-7502-bd33-d3cfc21acd20.jsonl. (3 October 2026, 15:20:24 +0200)
+
+> J’ai appliqué **un patch expérimental dans la bottle, sans lancer le jeu** : (3 October 2026, 15:20:24 +0200)
+>
+> - D3DMetal explicitement sélectionné. (3 October 2026, 15:20:24 +0200)
+> - Option de compilation `D3DM_FORCE_RTZ_TEXWRITE=1` activée. (3 October 2026, 15:20:24 +0200)
+> - Ancien cache sauvegardé pour forcer une recompilation au prochain lancement. (3 October 2026, 15:20:24 +0200)
+>
+> Le jeu utilisait déjà D3DMetal, qui traduit DirectX 12 ; l’absence de ce moteur n’explique donc pas le problème. [Source CodeWeavers](https://www.codeweavers.com/about/news/press/20230927) (3 October 2026, 15:20:24 +0200)
+>
+> Les tests hors jeu montrent que l’option change effectivement le code Metal de quatre shaders testés. **Cela ne prouve pas encore qu’elle corrige les fenêtres.** Le retour arrière est testé et la procédure enregistrée dans le skill. (3 October 2026, 15:20:24 +0200)
+>
+> | Ce que tu voulais | État | Preuve | (3 October 2026, 15:20:24 +0200)
+> |---|---|---| (3 October 2026, 15:20:24 +0200)
+> | Creuser les shaders | Fait | 1 257 conteneurs inspectés | (3 October 2026, 15:20:24 +0200)
+> | Appliquer dans la bottle | Fait | Configuration relue, sauvegarde vérifiée | (3 October 2026, 15:20:24 +0200)
+> | Fenêtres aux bonnes couleurs | À vérifier | Nécessite le prochain lancement | (3 October 2026, 15:20:24 +0200)

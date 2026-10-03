@@ -20,3 +20,11 @@
 
 - Matthieu constate « sdf ne change rien » et fournit une capture où les fenêtres restent vertes et multicolores. Désactiver les réflexions SDF ne suffit pas à corriger le défaut. Preuve : `/Users/zenray/.claude/tmp/tmp-control-resonant-crossover/SdfOffEvidence.json`. (3 October 2026)
 - Prochain essai isolé : restaurer SDF High, puis désactiver seulement Screen Space Reflections (SSR) et comparer les mêmes fenêtres ; ne pas fermer le jeu. (3 October 2026)
+
+## Essai du compilateur D3DMetal, jeu fermé (3 October 2026)
+
+- Nouvelle contrainte de Matthieu : tester et appliquer dans la bottle sans lancer le jeu. D3DMetal était déjà chargé selon les preuves de processus ; le support DirectX 12 ne prouve pas la compatibilité de tous les shaders ni du ray tracing. (3 October 2026)
+- Audit : 141 archives inchangées, 1257 conteneurs sans erreur de structure détectée ; 38 shaders de matériau reconnus, cinq compilables isolément et 33 demandant le contexte de liaison du jeu. Les garde-fous bounds-check et NaN sont déjà actifs par défaut. (3 October 2026)
+- Essai EXPÉRIMENTAL appliqué : `CX_GRAPHICS_BACKEND=d3dmetal`, `D3DM_FORCE_RTZ_TEXWRITE=1`, ancien cache D3DMetal archivé et vérifié. Le bit correspondant change le code Metal de quatre des cinq shaders testables isolément, sans erreur de compilation dans ces tests. L’effet sur les fenêtres reste NON VÉRIFIÉ. (3 October 2026)
+- Commande rejouable : `python3 /Users/zenray/.claude/tmp/tmp-control-resonant-crossover/Scripts/ShaderCompatibility.py apply`; `status` lit le manifeste, `restore` revient aux fichiers sauvegardés. Retour arrière testé exact. Aucun lancement automatique. (3 October 2026)
+- Rapport et preuves : `/Users/zenray/.claude/tmp/tmp-control-resonant-crossover/OfflineShaderCompatibilityReport.md`, `ShaderCompatibilityPatch.json`, `ShaderCompatibilityRollbackTest.json`, `CompilerProbe/Audit/Audit.json`, `CompilerProbe/RoundingCompatibilityProbe.json`. Le rendu correct attend une comparaison des mêmes fenêtres au prochain lancement par Matthieu. (3 October 2026)
