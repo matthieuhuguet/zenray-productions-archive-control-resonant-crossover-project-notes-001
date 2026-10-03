@@ -3,3 +3,15 @@
 - Project ID: control-resonant-crossover. (3 October 2026)
 - Canonical feedback: /Users/zenray/.claude/Memory1/Projects/control-resonant-crossover/FEEDBACK.md. (3 October 2026)
 - Append dated decisions and verified knowledge here; retain existing entries. (3 October 2026)
+
+
+## Correctif fenêtres confirmé (3 October 2026)
+
+- `m_eGIQuality` 2 vers 0, huit paramètres RT/PT déjà à zéro ; les autres réglages restent identiques. Matthieu confirme que les fenêtres ne font plus de pops après relancement avec le bon dossier de travail. (3 October 2026)
+- Procédure : `/Users/zenray/.claude/skills/control-resonant-window-fix/SKILL.md`. Preuve : `/Users/zenray/.claude/tmp/tmp-control-resonant-crossover/GiOffUserConfirmedProof.json`. (3 October 2026)
+
+## Correction du résultat et test suivant (3 October 2026)
+
+- GIQuality 0 améliore la première zone seulement : les captures suivantes présentent encore des fenêtres cyan, magenta et vertes. Le correctif complet reste non vérifié. (3 October 2026)
+- Matthieu désactive la génération d’images et constate un défaut identique. Preuve : /Users/zenray/.claude/tmp/tmp-control-resonant-crossover/FrameGenerationOffEvidence.json. (3 October 2026)
+- Le jeu reste ouvert. Prochain test isolé dans les options du jeu : réflexions SDF désactivées au même endroit. (3 October 2026)
