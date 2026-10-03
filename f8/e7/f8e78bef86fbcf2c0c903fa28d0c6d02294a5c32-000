@@ -15,3 +15,8 @@
 - GIQuality 0 améliore la première zone seulement : les captures suivantes présentent encore des fenêtres cyan, magenta et vertes. Le correctif complet reste non vérifié. (3 October 2026)
 - Matthieu désactive la génération d’images et constate un défaut identique. Preuve : /Users/zenray/.claude/tmp/tmp-control-resonant-crossover/FrameGenerationOffEvidence.json. (3 October 2026)
 - Le jeu reste ouvert. Prochain test isolé dans les options du jeu : réflexions SDF désactivées au même endroit. (3 October 2026)
+
+## Test SDF sans amélioration (3 October 2026)
+
+- Matthieu constate « sdf ne change rien » et fournit une capture où les fenêtres restent vertes et multicolores. Désactiver les réflexions SDF ne suffit pas à corriger le défaut. Preuve : `/Users/zenray/.claude/tmp/tmp-control-resonant-crossover/SdfOffEvidence.json`. (3 October 2026)
+- Prochain essai isolé : restaurer SDF High, puis désactiver seulement Screen Space Reflections (SSR) et comparer les mêmes fenêtres ; ne pas fermer le jeu. (3 October 2026)
