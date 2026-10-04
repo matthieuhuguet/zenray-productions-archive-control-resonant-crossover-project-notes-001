@@ -28,3 +28,30 @@
 - Essai EXPÉRIMENTAL appliqué : `CX_GRAPHICS_BACKEND=d3dmetal`, `D3DM_FORCE_RTZ_TEXWRITE=1`, ancien cache D3DMetal archivé et vérifié. Le bit correspondant change le code Metal de quatre des cinq shaders testables isolément, sans erreur de compilation dans ces tests. L’effet sur les fenêtres reste NON VÉRIFIÉ. (3 October 2026)
 - Commande rejouable : `python3 /Users/zenray/.claude/tmp/tmp-control-resonant-crossover/Scripts/ShaderCompatibility.py apply`; `status` lit le manifeste, `restore` revient aux fichiers sauvegardés. Retour arrière testé exact. Aucun lancement automatique. (3 October 2026)
 - Rapport et preuves : `/Users/zenray/.claude/tmp/tmp-control-resonant-crossover/OfflineShaderCompatibilityReport.md`, `ShaderCompatibilityPatch.json`, `ShaderCompatibilityRollbackTest.json`, `CompilerProbe/Audit/Audit.json`, `CompilerProbe/RoundingCompatibilityProbe.json`. Le rendu correct attend une comparaison des mêmes fenêtres au prochain lancement par Matthieu. (3 October 2026)
+
+
+## Cache reconstruit et precedent Resonance (4 October 2026)
+
+- Le journal du 29 August 2026 confirme deux gestes distincts pour Resonance A Plague Tale Legacy : correction du seuil Shader Model de 6.7 a 6.6 dans ce build exact, puis archivage du cache PSO. Ancien cache : 766 fichiers, 18 Mo ; nouveau : 303 fichiers, 6,1 Mo en deux minutes ; disparition des defauts confirmee par Matthieu. (4 October 2026)
+- Pour Control, le cache D3DMetal ancien est deja archive par l essai du 3 October 2026. Le lancement autorise cree le PID 83794, charge D3DMetal et libmetalirconverter, et reconstruit 40 239 204 octets de cache. Preuve : ShaderRebuildLaunchProof.json dans l atelier. Aucun cache actif n est modifie par l agent. (4 October 2026)
+- Cette reconstruction compile les shaders et pipelines rencontres pendant le jeu, pas tous les shaders de toutes les zones a l avance. Les 33 shaders de materiau refusant la compilation isolee exigent la root signature fournie par le moteur ; modifier leur Shader Model ou inventer cette signature ne constitue pas une correction prouvee. (4 October 2026)
+- Le rendu des fenetres reste non valide. ps ne retourne aucun environnement pour ce processus sur macOS ; la presence des variables dans la configuration de bottle est connue, leur lecture dans le processus reste non verifiee. Le patch binaire Resonance ne se transpose pas a Control. (4 October 2026)
+
+
+## Amelioration partielle et tests complets hors jeu (4 October 2026)
+
+- Matthieu constate moins de fenetres incorrectes mais un defaut restant ; capture conservee dans Evidence/WindowsPartialImprovement-20261004.png. Scene differente : aucune mesure comparative du nombre de fenetres n est revendiquee. Jeu ferme a sa demande, PID 83794 termine. (4 October 2026)
+- BatchShaderProbe.py teste les 1257 shaders dans deux modes, soit 2514 essais : 691 shaders compilent dans les deux modes, dont 479 changent de code Metal ; 566 exigent une description de liaison. Les 141 archives originales gardent leurs empreintes. (4 October 2026)
+- Dix descriptions RTS0 reelles sont extraites du cache ferme et ajoutees dans des COPIES de diagnostic : 5660 essais supplementaires. 284 des 566 shaders compilent avec au moins une description ; 282 echouent dans les dix contextes testes. Le lien exact entre shader et signature runtime reste inconnu, donc ces echecs ne prouvent pas une incompatibilite lors du vrai rendu. (4 October 2026)
+- ErrorMessages.json precise dix exemples : createHandle, createHandleFromBinding et createHandleForLib sont refuses dans ces contextes. Un mauvais contexte peut lui-meme produire ce refus ; ne pas presenter ces essais comme la cause prouvee des fenetres ou du crash ray tracing. (4 October 2026)
+- Barre de suivi locale servie par Scripts/StatusServer.py, adresse mesuree http://127.0.0.1:50986/ ; requete HTTP state.json verifiee. Le pourcentage porte seulement sur les essais realises, jamais sur la correction visuelle. Onglet Codex demande via open_in_codex, reponse queued. (4 October 2026)
+- Prochain diagnostic prepare sans lancement : Scripts/LaunchControlValidation.sh active la validation Metal et reprend le lanceur connu. Selon Apple, les erreurs de liaison ou de type de texture peuvent produire des couleurs incorrectes sans echec de compilation : https://github.com/apple/game-porting-toolkit/blob/main/game-porting-skills/skills/integrating-metal-shaderconverter-shaders/SKILL.md . Le correctif complet reste a rechercher et a valider. (4 October 2026)
+
+
+## Archive complète du fil Codex et résumé (4 October 2026)
+
+- Le fil Codex `01a10095-4b7f-7502-bd33-d3cfc21acd20` s'arrête le 4 October 2026 à 10:40:43 sur une erreur de quota (« usage limit »), au moment où il commençait l'archivage demandé. Claude Code reprend, lit les deux JSONL jusqu'à la fin et produit le dossier d'archive. (4 October 2026)
+- Dossier : `/Users/zenray/.claude/tmp/tmp-control-resonant-crossover/ConversationArchive/` avec `ConversationSummary.md` (déroulé en neuf temps, tableau des essais, tous les prompts), `ConversationTranscript.md` (texte intégral sans images, 26 prompts, 53 messages assistant, 129 appels d'outils), `ComparisonSheet.jpg` (cinq captures avec verdict), `ContactSheet.jpg` et `Images/` (les dix images distinctes du fil). (4 October 2026)
+- Bilan des essais : ray tracing et path tracing à 0 sans effet sur les fenêtres, illumination globale 2 vers 0 améliore une zone seulement, génération d'images coupée et réflexions SDF coupées sans effet, D3DMetal explicite plus cache reconstruit réduit les défauts selon Matthieu sans cause prouvée, 8 174 essais hors jeu sans cause identifiée. Le correctif complet n'est pas obtenu. (4 October 2026)
+- Prochain geste préparé et jamais exécuté : `Scripts/LaunchControlValidation.sh` (validation Metal), puis comparaison des mêmes fenêtres. La comparaison entre captures reste qualitative puisque les scènes diffèrent. (4 October 2026)
+- Procédure de reprise d'un fil Codex : skill `codex-thread-digest`. Les JSONL pèsent environ 90 Mo parce que les images y sont en base64 ; le texte seul en représente 8 Mo. (4 October 2026)
