@@ -73,3 +73,18 @@
 - Variable d'environnement complémentaire : ajout de D3DM_ALLOW_HOOKING=1 dans cxbottle.conf sous [EnvironmentVariables]. (04 October 2026)
 
 
+
+## État de consignation et synchronisation cloud ZenRay Assets V2 (04 October 2026)
+
+- Mémoire durable : FEEDBACK.md, Project1.md et le skill control-resonant-window-fix sont intégralement mis à jour et validés. (04 October 2026)
+- Dépôt Memory1 : commit c6ae4ebcb synchronisé et poussé sur la branche main de GitHub. (04 October 2026)
+- ZenRay Assets V2 : projet control-resonant-crossover surveillé (watched: true) avec 9 001 fichiers (1,00 Go) inventoriés et 100 % sauvegardés (backed-up, 0 en attente). (04 October 2026)
+- Sources du projet : atelier workshop (~/.claude/tmp/tmp-control-resonant-crossover, 8 998 fichiers) et mémoire project-notes (~/.claude/Memory1/Projects/control-resonant-crossover, 3 fichiers) synchronisés. (04 October 2026)
+- Derniers transferts vérifiés : jobs c3da1013-7f56-4a72-92e1-91542b1e5d1b et afb49b5c-c3b0-49a1-a102-399092cedcae achevés avec succès et publiés à 18:26:17 UTC (20:26:17 Europe/Paris). (04 October 2026)
+
+## Preuve runtime du hook actif en jeu (04 October 2026, 20:29)
+
+- Session de jeu : PID 85959 lancé à 20:20:22. (04 October 2026)
+- Log réel ctl-window-fix.log : « pipeline creators hooked / hooked », confirmant le succès de l'écriture directe dans la vtable __DATA de D3DMetal suite au patch binaire. (04 October 2026)
+- Neutralisation active d'interiorPS : « interiorPS cc6f0f9fb056f7f5 hidden -> 00000000 » intercepté 4 fois avec RenderTargetWriteMask forcé à 0. (04 October 2026)
+- Bilan du log : « after two minutes: 4 pipelines hidden, 0 without a blend state ». Le shader responsable des fenêtres multicolores est neutralisé en direct. (04 October 2026)

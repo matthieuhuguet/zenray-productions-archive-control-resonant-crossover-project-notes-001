@@ -1944,3 +1944,32 @@
 > 3. Découverte mémoire capitale : l'analyse Mach-O et vmmap a prouvé que la vtable de D3DMetal est située dans le segment __DATA (0x366000..0x3b1000), qui est DÉJÀ en lecture-écriture (rw-) par défaut sur macOS. (4 October 2026, 20:16:04 +0200)
 > 4. Correctif appliqué : neutralisation des sauts d'échec (NOP) dans PxFoundation_x64-ctl.dll aux offsets 0x94c et 0xa09 pour que l'écriture du hook dans la vtable s'exécute directement. (4 October 2026, 20:16:04 +0200)
 > 5. Déploiement : DLL corrigée copiée dans le dossier du jeu et D3DM_ALLOW_HOOKING=1 ajouté dans cxbottle.conf. (4 October 2026, 20:16:04 +0200)
+
+## 4 October 2026, 20:28:08 +0200 : Prompt
+
+<!-- feedback-event:39196012b98bf25be93ee9c652b7f032c87d7c0bd7f2360b308df6f5a96cc46a (4 October 2026, 20:28:08 +0200) -->
+- Project: control-resonant-crossover; kind: prompt. (4 October 2026, 20:28:08 +0200)
+
+> tout est consigné dans le projet et save dans le cloud ? /zenray-assets-v2 ? (4 October 2026, 20:28:08 +0200)
+
+## 4 October 2026, 20:28:33 +0200 : Iteration
+
+<!-- feedback-event:de14729e18fa9dab769ae947934f82cb1b86c836a0308e074c3ddf8de3e7eb1b (4 October 2026, 20:28:33 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 20:28:33 +0200)
+
+> Vérification complète de la consignation et de la sauvegarde cloud ZenRay Assets V2 (04 October 2026) : (4 October 2026, 20:28:33 +0200)
+> 1. Mémoire durable locale : FEEDBACK.md, Project1.md, SKILL.md et PROGRESS.md sont à jour avec le diagnostic, la cause racine (VirtualProtect et Wine sur vtable D3DMetal en __DATA), le patch binaire et les variables cxbottle.conf. (04 October 2026) (4 October 2026, 20:28:33 +0200)
+> 2. Dépôt GitHub Memory1 : synchronisé et poussé sur origin/main (commit c6ae4ebcb). (04 October 2026) (4 October 2026, 20:28:33 +0200)
+> 3. Sauvegarde Cloud ZenRay Assets V2 : vérifiée en direct sur le service Assets (127.0.0.1:3100). Le projet control-resonant-crossover est à l'état backed-up avec 9 001 fichiers sur 9 001 sauvegardés (0 en attente, 1,00 Go). (04 October 2026) (4 October 2026, 20:28:33 +0200)
+> 4. Sources synchronisées : atelier workshop (tmp-control-resonant-crossover, 8 998 fichiers) et notes project-notes (Memory1/Projects/control-resonant-crossover, 3 fichiers) archivés et publiés au cloud à 18:26:17 UTC (20:26:17). (04 October 2026) (4 October 2026, 20:28:33 +0200)
+
+## 4 October 2026, 20:29:14 +0200 : Iteration
+
+<!-- feedback-event:66a3c23ef80ff05b7601b6e43fdefc57cb9484b41a32a35e33f0773ce2325d20 (4 October 2026, 20:29:14 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 20:29:14 +0200)
+
+> Preuve d'exécution runtime en direct (04 October 2026, 20:29) : (4 October 2026, 20:29:14 +0200)
+> 1. Le jeu relancé à 20:20:22 (PID 85959) a chargé la DLL patchée. (4 October 2026, 20:29:14 +0200)
+> 2. ctl-window-fix.log confirme : « pipeline creators hooked / hooked ». Le hook a été écrit directement dans la vtable __DATA de D3DMetal sans blocage de VirtualProtect. (04 October 2026) (4 October 2026, 20:29:14 +0200)
+> 3. 4 pipelines interiorPS détectés et neutralisés (« interiorPS cc6f0f9fb056f7f5 hidden -> 00000000 » avec masque d'écriture forcé à 0). (04 October 2026) (4 October 2026, 20:29:14 +0200)
+> 4. Bilan après 2 minutes de jeu : « 4 pipelines hidden, 0 without a blend state ». Le shader à l'origine des fenêtres multicolores est neutralisé en direct pendant la partie. (04 October 2026) (4 October 2026, 20:29:14 +0200)
