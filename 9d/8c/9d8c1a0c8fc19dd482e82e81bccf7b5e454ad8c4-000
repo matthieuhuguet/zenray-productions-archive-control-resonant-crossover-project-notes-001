@@ -1809,3 +1809,48 @@
 - Source: checkpoint:claude:33aff807-121b-4710-b47f-bd4f19e1c67e. (4 October 2026, 11:00:55 +0200)
 
 > Reprise par Claude Code du fil Codex 01a10095, arrêté le 4 October 2026 à 10:40:43 par un quota d'usage atteint pendant l'archivage. Fait et vérifié : lecture complète des deux JSONL (26 prompts, 53 messages assistant, 129 appels d'outils, 10 images distinctes) ; dossier tmp-control-resonant-crossover/ConversationArchive/ avec ConversationSummary.md, ConversationTranscript.md, ComparisonSheet.jpg, ContactSheet.jpg et Images/ ; Project1.md et skill control-resonant-window-fix mis à jour (amélioration partielle seulement) ; skill codex-thread-digest créé et validé par comparaison des empreintes d'images. Résultat du chantier : correctif complet des fenêtres non obtenu, GI 0 partiel, génération d'images et SDF sans effet, D3DMetal plus cache reconstruit réduit les défauts selon Matthieu. Prochain pas : constater l'archive cloud, puis relancer le jeu avec Scripts/LaunchControlValidation.sh. (4 October 2026, 11:00:55 +0200)
+
+## 4 October 2026, 11:11:49 +0200 : Iteration
+
+<!-- feedback-event:74e522484b288346254d50681d8b79af60334534232aea3ec2fc2930b3c04946 (4 October 2026, 11:11:49 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 11:11:49 +0200)
+- Source: /Users/zenray/.claude/projects/-Users-zenray--claude-Memory1/33aff807-121b-4710-b47f-bd4f19e1c67e.jsonl. (4 October 2026, 11:11:49 +0200)
+
+> Le résumé, la planche de comparaison et l'archive sont faits, et le correctif complet des fenêtres n'est toujours pas obtenu. (4 October 2026, 11:11:49 +0200)
+>
+> ## Résumé du fil (4 October 2026, 11:11:49 +0200)
+>
+> Le fil Codex court du 3 octobre à 09:06 au 4 octobre à 10:40 (26 prompts, 10 images). Il s'arrête sur une erreur de quota Codex ("usage limit", retour possible à 14:24), alors que Codex commençait l'archivage demandé au dernier prompt. Rien n'avait encore été écrit, donc j'ai repris. (4 October 2026, 11:11:49 +0200)
+>
+> | Essai sur les fenêtres de Control | Résultat | (4 October 2026, 11:11:49 +0200)
+> |---|---| (4 October 2026, 11:11:49 +0200)
+> | Ray tracing et path tracing à 0 | sans effet | (4 October 2026, 11:11:49 +0200)
+> | Illumination globale 2 vers 0 | une zone corrigée, défaut dans la suivante | (4 October 2026, 11:11:49 +0200)
+> | Génération d'images coupée | défaut identique | (4 October 2026, 11:11:49 +0200)
+> | Réflexions SDF coupées | défaut identique | (4 October 2026, 11:11:49 +0200)
+> | D3DMetal explicite, option d'arrondi des textures, cache reconstruit | moins de défauts selon toi, cause non prouvée | (4 October 2026, 11:11:49 +0200)
+> | 8 174 essais hors jeu sur 1 257 shaders | aucune cause identifiée | (4 October 2026, 11:11:49 +0200)
+>
+> Le prochain geste prévu est `Scripts/LaunchControlValidation.sh`, qui n'a jamais été lancé. (4 October 2026, 11:11:49 +0200)
+>
+> ## Archive dans Assets (4 October 2026, 11:11:49 +0200)
+>
+> - **Dossier :** `~/.claude/tmp/tmp-control-resonant-crossover/ConversationArchive/`. Il contient `ConversationSummary.md`, `ConversationTranscript.md` (le texte intégral), `ComparisonSheet.jpg`, `ContactSheet.jpg` et `Images/`. (4 October 2026, 11:11:49 +0200)
+> - **Fichiers confirmés dans le cloud :** 33 fichiers (le dossier ci-dessus, `Project1.md`, `FEEDBACK.md`, les cinq captures et les preuves clés), avec une empreinte cloud identique aux octets locaux. (4 October 2026, 11:11:49 +0200)
+> - **Reste du projet :** 2 929 fichiers sur 8 906 sont sauvegardés, le reste continue seul en arrière-plan, sans date de fin. (4 October 2026, 11:11:49 +0200)
+> - **Mises à jour :** `Project1.md`, un checkpoint dans le feedback du projet, le skill `control-resonant-window-fix` (corrigé en "amélioration partielle") et le journal. J'ai aussi créé le skill `codex-thread-digest`, qui lit un fil Codex sans charger ses images. (4 October 2026, 11:11:49 +0200)
+>
+> ## À savoir (4 October 2026, 11:11:49 +0200)
+>
+> - **Copie cloud du fil Codex d'origine :** elle n'est pas confirmée. La bibliothèque `agent-conversations` n'arrive plus à pousser vers GitHub ("push refusé"), bloquée à 69 fichiers sur 777. J'ai proposé une tâche de correction, qui apparaît en pastille dans l'app. (4 October 2026, 11:11:49 +0200)
+> - **Planche de comparaison :** les scènes diffèrent d'une capture à l'autre, donc la comparaison est qualitative, sans comptage de fenêtres. (4 October 2026, 11:11:49 +0200)
+>
+> | Ce que tu voulais | Fait ? | Comment je le sais | (4 October 2026, 11:11:49 +0200)
+> |---|---|---| (4 October 2026, 11:11:49 +0200)
+> | Résumer le fil depuis les JSON, jusqu'à la fin | Oui | Les deux fichiers lus jusqu'à leur dernière ligne (fin à 10:40:43, quota) | (4 October 2026, 11:11:49 +0200)
+> | Archiver tout le projet via Assets V2 | En partie | 33 fichiers clés confirmés, le reste du projet en cours | (4 October 2026, 11:11:49 +0200)
+> | Planche de comparaison des images | Oui | `ComparisonSheet.jpg` | (4 October 2026, 11:11:49 +0200)
+> | Documenter feedback, protocole, prompts, résultat | Oui | Résumé, transcript, `Project1.md`, skill et checkpoint mis à jour | (4 October 2026, 11:11:49 +0200)
+> | Correctif complet des fenêtres | Non | Les fenêtres restent partiellement fausses selon ta dernière capture | (4 October 2026, 11:11:49 +0200)
+>
+> Ta demande reformulée : "Résume le fil Codex depuis ses JSON, archive tout dans Assets V2 avec prompts, essais et résultat, et fais une planche comparative des captures." Le mot utile est **checkpoint** : un compte rendu daté de fin de tour, rangé dans le feedback du projet. (4 October 2026, 11:11:49 +0200)
