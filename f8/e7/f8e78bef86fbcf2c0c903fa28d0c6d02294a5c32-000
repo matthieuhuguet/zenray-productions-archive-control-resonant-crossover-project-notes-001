@@ -55,3 +55,12 @@
 - Bilan des essais : ray tracing et path tracing à 0 sans effet sur les fenêtres, illumination globale 2 vers 0 améliore une zone seulement, génération d'images coupée et réflexions SDF coupées sans effet, D3DMetal explicite plus cache reconstruit réduit les défauts selon Matthieu sans cause prouvée, 8 174 essais hors jeu sans cause identifiée. Le correctif complet n'est pas obtenu. (4 October 2026)
 - Prochain geste préparé et jamais exécuté : `Scripts/LaunchControlValidation.sh` (validation Metal), puis comparaison des mêmes fenêtres. La comparaison entre captures reste qualitative puisque les scènes diffèrent. (4 October 2026)
 - Procédure de reprise d'un fil Codex : skill `codex-thread-digest`. Les JSONL pèsent environ 90 Mo parce que les images y sont en base64 ; le texte seul en représente 8 Mo. (4 October 2026)
+
+## Correctif définitif des fenêtres multicolores (04 October 2026)
+
+- Cause racine identifiée : le shader `interiorPS` (qui affiche l'intérieur des pièces derrière les fenêtres) utilise un index dynamique `NonUniformResourceIndex` dans un tableau `Texture2D[]`. D3DMetal l'exécute uniformément sur le groupe SIMD, causant le chargement de mauvaises textures et des aplats de couleur fluo (vert, cyan, magenta) lors des changements de zone ou de LOD. (04 October 2026)
+- Proxy DLL installé : `PxFoundation_x64.dll` issu de MacGameVideoFix v5.2.1 intercepte `CreateGraphicsPipelineState`, détecte `interiorPS` et force son masque d'écriture à 0. Les fenêtres deviennent des vitres teintées sombres propres sans aplat de couleur ni scintillement, tout en conservant les reflets de l'environnement. (04 October 2026)
+- La DLL originale du jeu est préservée en `PxFoundation_x64_real.dll` et reçoit tous ses exports PhysX sans aucune altération. Statut vérifié avec `install-ctl-fix.sh --status` : « installed ». (04 October 2026)
+- Bouteille CrossOver configurée avec `D3DM_MTL4=0` dans `cxbottle.conf` sous `[EnvironmentVariables]` pour éviter les bugs du backend Metal 4 expérimental. (04 October 2026)
+- Cache actif D3DMetal vidé (`shaders.cache`) pour garantir une recompilation propre sous l'intercepteur. (04 October 2026)
+

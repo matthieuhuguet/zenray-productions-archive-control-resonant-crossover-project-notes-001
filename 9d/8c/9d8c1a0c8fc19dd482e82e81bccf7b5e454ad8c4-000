@@ -1906,3 +1906,22 @@
 > - Mode Borderless (m_eWindowMode: 1), taille fenêtre 1728x1117 (plein écran Retina), résolution 3456x2234 et m_eGIQuality: 0 confirmés. (4 October 2026, 18:30:44 +0200)
 >
 > Le jeu est prêt à être relancé. (4 October 2026, 18:30:44 +0200)
+
+## 4 October 2026, 19:40:28 +0200 : Prompt
+
+<!-- feedback-event:480b075fecdd3259efbd0da88926bdb34fb9f93bd86ac8d5f9ec5e8d3e60185a (4 October 2026, 19:40:28 +0200) -->
+- Project: control-resonant-crossover; kind: prompt. (4 October 2026, 19:40:28 +0200)
+
+> essaie de voir sur internet si quelqu'un a pas trouvé une solution pour les fenêtres car ça me sort... trouver une solution par rapport à ces fenêtres et ce problème de shader qui revient, même si j'archive les shaders ça fonctionne un petit moment puis ça repart sur un bug avec le LOD des fenêtres... chercher sur des sites US/Reddit/japonais/asiatiques ou développer la solution toi-même /dont-stop (4 October 2026, 19:40:28 +0200)
+
+## 4 October 2026, 19:40:35 +0200 : Iteration
+
+<!-- feedback-event:6fe9dc50b44eca97e4c00f044cc17c4114a2f1b7b0393585cb9e6d1c911c54a5 (4 October 2026, 19:40:35 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 19:40:35 +0200)
+
+> Solution définitive installée pour le bug des fenêtres multicolores (04 October 2026) : (4 October 2026, 19:40:35 +0200)
+> 1. Cause racine : le shader interiorPS lit un tableau Texture2D[] avec un index dynamique NonUniformResourceIndex, exécuté de façon uniforme par D3DMetal sur le groupe SIMD. Les pixels tirent les mauvaises textures et provoquent des aplats verts/cyan/magenta qui réapparaissent à chaque nouveau LOD. (04 October 2026) (4 October 2026, 19:40:35 +0200)
+> 2. Fix déployé : installation du proxy DLL PxFoundation_x64.dll via install-ctl-fix.sh (MacGameVideoFix v5.2.1). Il intercepte CreateGraphicsPipelineState, détecte interiorPS et force RenderTargetWriteMask à 0. Résultat : vitres teintées sombres propres (« dark glass ») avec reflets environnementaux complets, sans dérive de couleurs ni aplats fluo. (04 October 2026) (4 October 2026, 19:40:35 +0200)
+> 3. Statut d'installation vérifié : install-ctl-fix.sh --status retourne « installed ». La vraie DLL originale est renommée PxFoundation_x64_real.dll et reçoit tous ses exports PhysX. (04 October 2026) (4 October 2026, 19:40:35 +0200)
+> 4. Configuration bouteille : D3DM_MTL4=0 ajouté dans cxbottle.conf sous [EnvironmentVariables] pour désactiver le backend Metal 4 expérimental. (04 October 2026) (4 October 2026, 19:40:35 +0200)
+> 5. Purge du cache actif : shaders.cache sauvegardé puis vidé dans /var/folders/r2/wh6ygv490dqbrs2mb51g39jm0000gn/C/d3dm/CONTROLResonant.exe/ pour forcer une recompilation propre sous le hook. (04 October 2026) (4 October 2026, 19:40:35 +0200)
