@@ -64,3 +64,12 @@
 - Bouteille CrossOver configurée avec `D3DM_MTL4=0` dans `cxbottle.conf` sous `[EnvironmentVariables]` pour éviter les bugs du backend Metal 4 expérimental. (04 October 2026)
 - Cache actif D3DMetal vidé (`shaders.cache`) pour garantir une recompilation propre sous l'intercepteur. (04 October 2026)
 
+## Diagnostic d'échec du hook et patch binaire du proxy (04 October 2026)
+
+- Constat : Matthieu fournit une capture à Manhattan avec fenêtres multicolores. Le fichier ctl-window-fix.log confirme : « pipeline creators NOT hooked / NOT hooked » et « 0 pipelines hidden ». (04 October 2026)
+- Cause démontrée par désassemblage : le proxy DLL appelait VirtualProtect sur la vtable de l'objet ID3D12Device. Dans CrossOver avec D3DMetal, la vtable réside dans le framework macOS hôte (non référencé dans les tables PE de Wine), provoquant le renvoi d'un code d'erreur par Wine. Un saut conditionnel d'abandon (je) empêchait alors l'écriture du hook dans la vtable. (04 October 2026)
+- Preuve mémoire : l'analyse Mach-O et vmmap prouve que la vtable de D3DMetal est située dans le segment __DATA (vmaddr 0x366000..0x3b1000), qui est mappé en lecture-écriture (rw-) par défaut sur macOS. (04 October 2026)
+- Patch binaire appliqué : remplacement par deux NOP (0x90 0x90) des deux sauts d'échec (offsets 0x94c et 0xa09) dans PxFoundation_x64-ctl.dll. L'écriture de Hooked_CreateGraphicsPipelineState et Hooked_CreatePipelineState s'exécute ainsi directement dans la vtable. (04 October 2026)
+- Variable d'environnement complémentaire : ajout de D3DM_ALLOW_HOOKING=1 dans cxbottle.conf sous [EnvironmentVariables]. (04 October 2026)
+
+

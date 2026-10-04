@@ -1925,3 +1925,22 @@
 > 3. Statut d'installation vérifié : install-ctl-fix.sh --status retourne « installed ». La vraie DLL originale est renommée PxFoundation_x64_real.dll et reçoit tous ses exports PhysX. (04 October 2026) (4 October 2026, 19:40:35 +0200)
 > 4. Configuration bouteille : D3DM_MTL4=0 ajouté dans cxbottle.conf sous [EnvironmentVariables] pour désactiver le backend Metal 4 expérimental. (04 October 2026) (4 October 2026, 19:40:35 +0200)
 > 5. Purge du cache actif : shaders.cache sauvegardé puis vidé dans /var/folders/r2/wh6ygv490dqbrs2mb51g39jm0000gn/C/d3dm/CONTROLResonant.exe/ pour forcer une recompilation propre sous le hook. (04 October 2026) (4 October 2026, 19:40:35 +0200)
+
+## 4 October 2026, 20:15:58 +0200 : Prompt
+
+<!-- feedback-event:d8dd72f9c585906deb3c2f6949f2725adc47fc774ac471aa6af481f9ef99e152 (4 October 2026, 20:15:58 +0200) -->
+- Project: control-resonant-crossover; kind: prompt. (4 October 2026, 20:15:58 +0200)
+
+> Ouais tu dis de la merde quoi ... ou alors tu as oublié d'apply ... regarde l'img (4 October 2026, 20:15:58 +0200)
+
+## 4 October 2026, 20:16:04 +0200 : Iteration
+
+<!-- feedback-event:d1f800548224118e69420a0dd96bed3490dfb74127704e72d3e74ebb132436f9 (4 October 2026, 20:16:04 +0200) -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 20:16:04 +0200)
+
+> Diagnostic par la preuve du défaut d'application du hook (04 October 2026) : (4 October 2026, 20:16:04 +0200)
+> 1. Preuve dans les logs réels : ctl-window-fix.log contenait « pipeline creators NOT hooked / NOT hooked » et « 0 pipelines hidden ». Le proxy DLL s'est bien chargé mais n'a pas pu installer son intercepteur. (4 October 2026, 20:16:04 +0200)
+> 2. Cause exacte identifiée au désassembleur : le proxy DLL appelait VirtualProtect sur la vtable de l'objet ID3D12Device. Or sous macOS et CrossOver, cette vtable réside dans le framework hôte D3DMetal (hors de la table mémoire PE de Wine), ce qui faisait échouer VirtualProtect avec une erreur de paramètre. Le code d'origine comportait un saut conditionnel d'abandon (je) qui empêchait l'écriture du hook en cas de retour zéro de VirtualProtect. (4 October 2026, 20:16:04 +0200)
+> 3. Découverte mémoire capitale : l'analyse Mach-O et vmmap a prouvé que la vtable de D3DMetal est située dans le segment __DATA (0x366000..0x3b1000), qui est DÉJÀ en lecture-écriture (rw-) par défaut sur macOS. (4 October 2026, 20:16:04 +0200)
+> 4. Correctif appliqué : neutralisation des sauts d'échec (NOP) dans PxFoundation_x64-ctl.dll aux offsets 0x94c et 0xa09 pour que l'écriture du hook dans la vtable s'exécute directement. (4 October 2026, 20:16:04 +0200)
+> 5. Déploiement : DLL corrigée copiée dans le dossier du jeu et D3DM_ALLOW_HOOKING=1 ajouté dans cxbottle.conf. (4 October 2026, 20:16:04 +0200)
