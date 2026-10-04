@@ -1854,3 +1854,55 @@
 > | Correctif complet des fenêtres | Non | Les fenêtres restent partiellement fausses selon ta dernière capture | (4 October 2026, 11:11:49 +0200)
 >
 > Ta demande reformulée : "Résume le fil Codex depuis ses JSON, archive tout dans Assets V2 avec prompts, essais et résultat, et fais une planche comparative des captures." Le mot utile est **checkpoint** : un compte rendu daté de fin de tour, rangé dans le feedback du projet. (4 October 2026, 11:11:49 +0200)
+
+## 4 October 2026, 18:17:30 +0200 : Prompt
+
+<!-- feedback-event:92ba5f502eeb1b96adb39b2282419b5a95233f66076dcf841e23fb30ea224a50 (4 October 2026, 18:17:30 +0200) -->
+- Project: control-resonant-crossover; kind: prompt. (4 October 2026, 18:17:30 +0200)
+
+> j'ai un bug visuel de shader peut être qu'on peut archiver le cache pour le reconstruire ? control resonant /zenray-assets-v2 je ferme le jeu dis moi quand c'est bon comprends le context. (4 October 2026, 18:17:30 +0200)
+
+## 4 October 2026, 18:17:30 +0200 : Iteration
+
+<!-- feedback-event:4 October 2026, 18:17:30 +0200 -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 18:17:30 +0200)
+
+> Le jeu a été vérifié complètement fermé (aucun processus actif). (4 October 2026, 18:17:30 +0200)
+>
+> 1. Archivage du cache de shaders D3DMetal : (4 October 2026, 18:17:30 +0200)
+> - Le dossier shaders.cache de D3DMetal (68,73 Mo, 9 fichiers) a été archivé dans backups/cache-archive-20261004-181644/shaders.cache avec contrôle d'empreinte SHA256 à 100%. (4 October 2026, 18:17:30 +0200)
+> - Le dossier de cache actif a été nettoyé afin que D3DMetal le reconstruise à neuf au prochain lancement. (4 October 2026, 18:17:30 +0200)
+> - Preuve enregistrée dans ShaderCacheArchiveProof.json. (4 October 2026, 18:17:30 +0200)
+>
+> 2. Résolution du bug de quart d'écran et des fenêtres roses : (4 October 2026, 18:17:30 +0200)
+> - m_iLastWindowSizeX et m_iLastWindowSizeY sont passés de 1018x627 à 1728x1117 (taille logique complète Retina), avec m_eWindowMode à 1 (Borderless) et résolution de sortie 3456x2234. (4 October 2026, 18:17:30 +0200)
+> - m_eGIQuality est repassé de 2 à 0 (l'illumination globale était revenue à 2 dans le jeu, causant le clignotement rose/violet des vitres de Manhattan). (4 October 2026, 18:17:30 +0200)
+>
+> Le jeu est prêt à être relancé. (4 October 2026, 18:17:30 +0200)
+
+## 4 October 2026, 18:30:44 +0200 : Prompt
+
+<!-- feedback-event:7940b65c11a41cbde85cd85310888041c53e7359f20984092ff013b557e888c4 (4 October 2026, 18:30:44 +0200) -->
+- Project: control-resonant-crossover; kind: prompt. (4 October 2026, 18:30:44 +0200)
+
+> nouvelle zone essayons de re archiver le cache ça devrait marcher (4 October 2026, 18:30:44 +0200)
+
+## 4 October 2026, 18:30:44 +0200 : Iteration
+
+<!-- feedback-event:4 October 2026, 18:30:44 +0200 -->
+- Project: control-resonant-crossover; kind: iteration. (4 October 2026, 18:30:44 +0200)
+
+> Le jeu a été vérifié complètement arrêté avant toute manipulation. (4 October 2026, 18:30:44 +0200)
+>
+> 1. Capture utilisateur archivée : (4 October 2026, 18:30:44 +0200)
+> - Image ZoeAreaWindowsBug-20261004-1830.jpg enregistrée dans Evidence/ (zone de Zoe devant le panneau FBC Field Office, montrant des fenêtres vertes et cyans sur le bâtiment en arrière-plan). (4 October 2026, 18:30:44 +0200)
+>
+> 2. Archivage du cache D3DMetal : (4 October 2026, 18:30:44 +0200)
+> - shaders.cache (38,88 Mo, 5 fichiers nouvellement compilés) archivé dans backups/cache-archive-20261004-183035/shaders.cache avec contrôle d'empreinte SHA256 à 100%. (4 October 2026, 18:30:44 +0200)
+> - Dossier de cache actif vidé pour déclencher une reconstruction propre au prochain lancement. (4 October 2026, 18:30:44 +0200)
+> - Preuve enregistrée dans ShaderCacheArchiveProof.json. (4 October 2026, 18:30:44 +0200)
+>
+> 3. Vérification des paramètres renderer.ini : (4 October 2026, 18:30:44 +0200)
+> - Mode Borderless (m_eWindowMode: 1), taille fenêtre 1728x1117 (plein écran Retina), résolution 3456x2234 et m_eGIQuality: 0 confirmés. (4 October 2026, 18:30:44 +0200)
+>
+> Le jeu est prêt à être relancé. (4 October 2026, 18:30:44 +0200)
