@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "projectId": "control-resonant-crossover",
- "scannedAt": "2026-10-26T18:59:59.851Z",
+ "scannedAt": "2026-10-27T01:00:35.753Z",
  "conversations": [
   {
    "projectId": "control-resonant-crossover",
@@ -14,8 +14,8 @@
    "conversationId": "gemini:614b02bf-db3f-41fb-a34d-c2a5b91456ec",
    "provider": "gemini",
    "sessionId": "614b02bf-db3f-41fb-a34d-c2a5b91456ec",
-   "title": "crossover '/Users/zenray/Library/Application Support/CrossOver/Bottles/Control Resonant/drive_c/CONTROL Resonant/CONTROLResonant.exe' ne se ",
-   "updatedAt": "2026-10-04T18:29:23.092724+00:00",
+   "title": "Conversation Gemini 614b02bf",
+   "updatedAt": "2026-10-04T18:30:00.583Z",
    "bytes": 8347648,
    "boundProject": null
   },
