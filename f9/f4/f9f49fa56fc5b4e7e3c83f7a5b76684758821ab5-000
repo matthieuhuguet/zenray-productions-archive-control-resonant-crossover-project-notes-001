@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "projectId": "control-resonant-crossover",
- "scannedAt": "2026-10-30T08:01:10.146Z",
+ "scannedAt": "2026-10-30T14:17:19.193Z",
  "conversations": [
   {
    "projectId": "control-resonant-crossover",
@@ -40,6 +40,22 @@
    "lines": 1,
    "work": 0,
    "prompts": 0,
+   "first": "2026-10-26T12:21:40.581Z",
+   "last": "2026-10-26T12:21:40.581Z",
+   "strength": "weak",
+   "conversationId": "claude:38575095-b716-47ed-af1d-bf22b8ff30eb",
+   "provider": "claude",
+   "sessionId": "38575095-b716-47ed-af1d-bf22b8ff30eb",
+   "title": "zenray freelance",
+   "updatedAt": "2026-10-30T13:00:29.267Z",
+   "bytes": 38851,
+   "boundProject": "zenray-calendar-plan-23-october-2026"
+  },
+  {
+   "projectId": "control-resonant-crossover",
+   "lines": 1,
+   "work": 0,
+   "prompts": 0,
    "first": "2026-10-29T23:18:40.229Z",
    "last": "2026-10-29T23:18:40.229Z",
    "strength": "weak",
@@ -50,22 +66,6 @@
    "updatedAt": "2026-10-30T02:12:26.822Z",
    "bytes": 37157,
    "boundProject": null
-  },
-  {
-   "projectId": "control-resonant-crossover",
-   "lines": 1,
-   "work": 0,
-   "prompts": 0,
-   "first": "2026-10-26T12:21:40.581Z",
-   "last": "2026-10-26T12:21:40.581Z",
-   "strength": "weak",
-   "conversationId": "claude:38575095-b716-47ed-af1d-bf22b8ff30eb",
-   "provider": "claude",
-   "sessionId": "38575095-b716-47ed-af1d-bf22b8ff30eb",
-   "title": "zenray freelance",
-   "updatedAt": "2026-10-30T00:33:11.745Z",
-   "bytes": 39014,
-   "boundProject": "zenray-calendar-plan-23-october-2026"
   },
   {
    "projectId": "control-resonant-crossover",
